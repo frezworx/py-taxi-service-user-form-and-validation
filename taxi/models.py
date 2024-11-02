@@ -22,7 +22,7 @@ class Driver(AbstractUser):
         validators=[
             RegexValidator(
                 regex=r"^[A-Z]{3}\d{5}$",
-                message="Number of licese must consist "
+                message="Number of license must consist "
                         "only of 8 characters, first 3 characters "
                         "are uppercase letters, "
                         "last 5 characters are digits."

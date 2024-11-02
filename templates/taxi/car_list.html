@@ -22,13 +22,13 @@
       </form>
     </div>
 
-    
+
     <div class="col-md-8">
       <ul class="list-group">
       <p>List cars</p>
         {% for car in car_list %}
           <li class="list-group-item">
-            <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
+            <a href="{% url 'taxi:car-detail' pk=car.id %} ">{{ car.id }}</a>
             {{ car.model }} ({{ car.manufacturer.name }})
           </li>
         {% empty %}

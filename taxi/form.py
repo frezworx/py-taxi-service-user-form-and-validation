@@ -1,7 +1,19 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
 
 from taxi.models import Driver, Car
+
+
+class DriverCreateForm(UserCreationForm):
+    class Meta:
+        model = Driver
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "license_number",
+        ]
 
 
 class DriverLicenseUpdateForm(forms.ModelForm):
@@ -10,7 +22,7 @@ class DriverLicenseUpdateForm(forms.ModelForm):
         validators=[
             RegexValidator(
                 regex=r"^[A-Z]{3}\d{5}$",
-                message="Number of licese must consist "
+                message="Number of license must consist "
                         "only of 8 characters, first 3 characters "
                         "are uppercase letters, "
                         "last 5 characters are digits."

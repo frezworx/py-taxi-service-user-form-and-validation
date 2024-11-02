@@ -108,13 +108,6 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class DriverCreateView(LoginRequiredMixin, generic.CreateView):
     model = Driver
-    fields = [
-        "username",
-        "password",
-        "first_name",
-        "last_name",
-        "license_number",
-    ]
     template_name = "taxi/driver_create_or_update.html"
     success_url = reverse_lazy("taxi:driver-list")
 
@@ -134,10 +127,10 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Driver.objects.all().prefetch_related("cars__manufacturer")
 
 
-class DriverLicenseUpdate(LoginRequiredMixin, generic.UpdateView):
+class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Driver
     form_class = DriverLicenseUpdateForm
-    template_name = "taxi/driver_license_update.html"
+    template_name = "taxi/driver_update.html"
 
     def get_success_url(self):
         return reverse(
